@@ -1,0 +1,41 @@
+﻿@model TheEverythingStore.Models.Category
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Category</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+    </dl>
+</div>
+
+<h5>Products</h5>
+<table class="table table-striped table-hover sortable">
+   <tr>
+       <th>Name</th>
+       <th>Price</th>
+   </tr>
+    @foreach (var p in Model.Products)
+    {
+        <td>@p.Name</td>
+        <td>@String.Format("{0:c}", p.Price)</td>
+    }
+    </table>
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CategoryId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
